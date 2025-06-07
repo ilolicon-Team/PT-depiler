@@ -12,6 +12,7 @@ export type SiteSchema =
   | "AbstractBittorrentSite"
   | "AbstractPrivateSite"
   | "NexusPHP"
+  | "NexusPHPiloliconPT"
   | "Unit3D"
   | "Gazelle"
   | "GazelleJSONAPI"

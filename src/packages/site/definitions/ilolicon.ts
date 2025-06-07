@@ -1,0 +1,245 @@
+import type { ISiteMetadata, IAdvancedSearchRequestConfig } from "../types";
+import {
+  CategoryInclbookmarked,
+  CategoryIncldead,
+  CategorySpstate,
+  SchemaMetadata,
+} from "../schemas/NexusPHPiloliconPT.ts";
+
+export const siteMetadata: ISiteMetadata = {
+  ...SchemaMetadata,
+
+  version: 1,
+
+  id: "ilolicon",
+  name: "ilolicon PT",
+  description: "如果你也喜欢萝莉的话",
+  tags: ["成人", "萝莉"],
+
+  type: "private",
+  schema: "NexusPHPiloliconPT",
+
+  collaborator: ["Ellie"],
+
+  urls: ["ROT13:uggcf://funer.vybyvpba.pbz/"],
+
+  category: [
+    {
+      name: "搜索入口",
+      key: "url",
+      options: [
+        { name: "种子区", value: "/torrents.php" },
+        { name: "特别区", value: "/special.php" },
+      ],
+      cross: false,
+      generateRequestConfig: (selectedCategories) => {
+        const ret = { requestConfig: { url: selectedCategories, params: {} } };
+        return ret as IAdvancedSearchRequestConfig;
+      },
+    },
+    {
+      name: "分类",
+      key: "cat",
+      options: [
+        { value: 401, name: "Live Action Sub" },
+        { value: 402, name: "Live Action Raw" },
+        { value: 404, name: "本" },
+        { value: 405, name: "动漫" },
+        { value: 408, name: "无损音乐" },
+        { value: 410, name: "音频" },
+        { value: 411, name: "照片" },
+        { value: 412, name: "游戏" },
+        { value: 413, name: "软件" },
+      ],
+      cross: { mode: "append" },
+    },
+    {
+      name: "媒介",
+      key: "medium",
+      options: [
+        { value: 14, name: "UHD Blu-ray" },
+        { value: 1, name: "Blu-ray" },
+        { value: 3, name: "Remux" },
+        { value: 7, name: "Encode" },
+        { value: 5, name: "HDTV" },
+        { value: 12, name: "WEB-DL" },
+        { value: 2, name: "DVD" },
+        { value: 8, name: "CD" },
+        { value: 11, name: "Other" },
+      ],
+      cross: { mode: "append" },
+    },
+    {
+      name: "分辨率",
+      key: "standard",
+      options: [
+        { value: 5, name: "2160p" },
+        { value: 1, name: "1080p" },
+        { value: 2, name: "1080i" },
+        { value: 3, name: "720p" },
+        { value: 4, name: "SD" },
+        { value: 9, name: "Other" },
+      ],
+      cross: { mode: "append" },
+    },
+    {
+      name: "标签",
+      key: "tag_id",
+      options: [
+        { value: 25, name: "精选" },
+        { value: 8, name: "R18" },
+        { value: 1, name: "禁转" },
+        { value: 3, name: "官方" },
+        { value: 20, name: "原创" },
+        { value: 2, name: "首发" },
+        { value: 15, name: "自购" },
+        { value: 5, name: "国语" },
+        { value: 23, name: "粤语" },
+        { value: 6, name: "中字" },
+        { value: 18, name: "ENSub" },
+        { value: 22, name: "特效" },
+        { value: 4, name: "DIY" },
+        { value: 13, name: "DoVi" },
+        { value: 7, name: "HDR10" },
+        { value: 14, name: "HDR10+" },
+        { value: 16, name: "Atmos" },
+        { value: 9, name: "原生原盘" },
+        { value: 11, name: "LOLI" },
+        { value: 24, name: "无对白" },
+        { value: 19, name: "GalGame" },
+        { value: 17, name: "零魔" },
+        { value: 21, name: "分集" },
+        { value: 10, name: "其他" },
+      ],
+      cross: false,
+    },
+    CategoryIncldead,
+    CategorySpstate,
+    CategoryInclbookmarked,
+  ],
+
+  searchEntry: {
+    area_torrents: { name: "种子区", requestConfig: { url: "/torrents.php" } },
+    area_special: { name: "特别区", requestConfig: { url: "/special.php" } },
+  },
+
+  levelRequirements: [
+    {
+      id: 1,
+      name: "Peasant",
+      privilege: "被降级的用户",
+    },
+    {
+      id: 2,
+      name: "User",
+      privilege: "新用户的默认级别。",
+    },
+    {
+      id: 3,
+      name: "Power User",
+      downloaded: "50GB",
+      ratio: 1.05,
+      seedingPoints: 50000,
+      privilege: "可以发布趣味盒内容。可以在综合区上传种子。",
+    },
+    {
+      id: 4,
+      name: "Elite User",
+      downloaded: "120GB",
+      ratio: 1.55,
+      seedingPoints: 200000,
+      privilege: "",
+    },
+    {
+      id: 5,
+      name: "Crazy User",
+      downloaded: "300GB",
+      ratio: 1.45,
+      seedingPoints: 400000,
+      privilege: "封存账号后不会被删除。",
+    },
+    {
+      id: 6,
+      name: "Insane User",
+      downloaded: "500GB",
+      ratio: 2.55,
+      seedingPoints: 688888,
+      privilege: "",
+    },
+    {
+      id: 7,
+      name: "Veteran User",
+      downloaded: "750GB",
+      ratio: 3.05,
+      seedingPoints: 1011000,
+      privilege: "永远保留账号。",
+    },
+    {
+      id: 8,
+      name: "Extreme User",
+      downloaded: "1TB",
+      ratio: 3.55,
+      seedingPoints: 1500000,
+      privilege: "允许使用个性条；可以查看NFO文档。",
+    },
+    {
+      id: 9,
+      name: "Ultimate User",
+      downloaded: "1.5TB",
+      ratio: 4.05,
+      seedingPoints: 2000000,
+      privilege: "可以请求续种；得到一个邀请名额。",
+    },
+    {
+      id: 10,
+      name: "Nexus Master",
+      downloaded: "3TB",
+      ratio: 4.55,
+      seedingPoints: 3000000,
+      privilege: "可以查看种子结构；得到两个邀请名额。",
+    },
+    {
+      id: 100,
+      groupType: "vip",
+      name: "贵宾(VIP)",
+      privilege: "和Nexus Master拥有相同权限并被认为是精英成员。免除自动降级。使用魔力购买的VIP不计算下载量",
+    },
+    {
+      id: 200,
+      groupType: "manager",
+      name: "养老族(Retiree)",
+      privilege: "退休后的管理组成员。",
+    },
+    {
+      id: 201,
+      groupType: "manager",
+      name: "发布员(Uploader)",
+      privilege: "专注的发布者。免除自动降级；",
+    },
+    {
+      id: 202,
+      groupType: "manager",
+      name: "总版主(Moderator)",
+      privilege:
+        "可以查看管理组信箱、举报信箱；管理趣味盒内容、投票内容；可以编辑或删除任何发布的种子；可以管理候选；可以管理论坛帖子、用户评论；可以查看机密日志；可以删除任何字幕；可以管理日志中的代码、史册；可以查看用户的邀请记录；可以管理用户帐号的一般信息。不能管理友情链接、最近消息、论坛版块；不能将种子设为置顶或促销；不能查看用户IP或Email等机密信息；不能删除账号。",
+    },
+    {
+      id: 203,
+      groupType: "manager",
+      name: "管理员(Administrator)",
+      privilege: "除了不能改变站点设定、管理捐赠外，可以做任何事。",
+    },
+    {
+      id: 204,
+      groupType: "manager",
+      name: "维护开发员(Sysop)",
+      privilege: "网站开发/维护人员，可以改变站点设定，不能管理捐赠。",
+    },
+    {
+      id: 205,
+      groupType: "manager",
+      name: "主管(Staff Leader)",
+      privilege: "网站主管，可以做任何事。",
+    },
+  ],
+};
